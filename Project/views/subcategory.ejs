@@ -27,19 +27,7 @@
             <!--begin::Row-->
             <div class="row g-4">
               <!--begin::Col-->
-              <div class="col-12">
-                <div class="callout callout-info">
-                  For detailed documentation of Form visit
-                  <a
-                    href="https://getbootstrap.com/docs/5.3/forms/overview/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="callout-link"
-                  >
-                    Bootstrap Form
-                  </a>
-                </div>
-              </div>
+              
               <!--end::Col-->
               <!--begin::Col-->
               <div class="col-md-6">
@@ -90,7 +78,42 @@
               </div>
               <!--end::Col-->
               <!--begin::Col-->
-              
+               <div class="col-md-6">
+                <div class="card mb-4">
+                  <div class="card-header"><h3 class="card-title">Bordered Table</h3></div>
+                  <!-- /.card-header -->
+                  <div class="card-body">
+                    <table class="table table-bordered">
+                      <thead>
+                        <tr>
+                          <th style="width: 10px">#</th>
+                          <th>Category</th>
+                          <th>Subcategory</th>
+                          <th>Action</th>
+                        </tr>
+                      </thead>
+                     <tbody>
+                      <% subcatdata.map((i,index)=>{ %>
+                          <tr>
+                            <td><%= index+1%></td>
+                            <td><%= i.cat_id %></td>
+                            <td><%= i.subcatname %></td>
+                            <td>
+                              <a href="" class="btn btn-info">Edit</a>
+                              <a href="/subcategory/del/<%= i._id %>" class="btn btn-danger">Delete</a>
+                            </td>
+                          </tr>
+                      <% })%>
+                     </tbody>
+                    </table>
+                  </div>
+                  <!-- /.card-body -->
+                 
+                </div>
+                <!-- /.card -->
+                
+                <!-- /.card -->
+              </div>
               <!--end::Col-->
             </div>
             <!--end::Row-->
