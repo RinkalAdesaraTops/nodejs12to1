@@ -38,6 +38,8 @@
                   <!--end::Header-->
                   <!--begin::Form-->
                   <form method="post" name="frm" action="/subcategory/ins">
+                          
+                    <input type="hidden" name="subid" value="<%= (editdata)?editdata._id:''%>">
                     <!--begin::Body-->
                     <div class="card-body">
                       <div class="mb-3">
@@ -48,6 +50,7 @@
                           class="form-control"
                           id="exampleInputEmail1"
                           aria-describedby="emailHelp"
+                          value="<%= (editdata)?editdata.cat_id:''%>"
                         />
                         
                       </div>
@@ -60,6 +63,7 @@
                           class="form-control"
                           id="exampleInputEmail1"
                           aria-describedby="emailHelp"
+                          value="<%= (editdata)?editdata.subcatname:''%>"
                         />
                         
                       </div>
@@ -99,8 +103,9 @@
                             <td><%= i.cat_id %></td>
                             <td><%= i.subcatname %></td>
                             <td>
-                              <a href="" class="btn btn-info">Edit</a>
+                             
                               <a href="/subcategory/del/<%= i._id %>" class="btn btn-danger">Delete</a>
+                              <a href="/subcategory/edit/<%= i._id %>" class="btn btn-info">Edit</a>
                             </td>
                           </tr>
                       <% })%>
