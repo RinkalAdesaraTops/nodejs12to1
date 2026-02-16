@@ -5,7 +5,8 @@ mongoose.connect("mongodb://localhost:27017/nodejs12to1")
 const schema = mongoose.Schema
 let subcatSchema = new schema({
     cat_id:Number,
-    subcatname:String
+    subcatname:String,
+    image:String
 })
 const subcatModel = mongoose.model("subcategory",subcatSchema)
 module.exports = subcatModel

@@ -2,6 +2,10 @@ const subcatModel = require('../models/subcatModel')
 // import subcatModel from "../models/subcatModel.js"
 const insSubcat=async(req,res)=>{
     let id = req.body.subid
+    console.log(req.file);
+    if(req.file != undefined){
+        req.body.image = req.file.filename
+    }
     if(id!=''){
         let ans = await subcatModel.findByIdAndUpdate(id,req.body)
     } else {

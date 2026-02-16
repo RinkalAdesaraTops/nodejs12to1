@@ -37,7 +37,7 @@
                   <div class="card-header"><div class="card-title">Quick Example</div></div>
                   <!--end::Header-->
                   <!--begin::Form-->
-                  <form method="post" name="frm" action="/subcategory/ins">
+                  <form method="post" name="frm" action="/subcategory/ins" enctype="multipart/form-data">
                           
                     <input type="hidden" name="subid" value="<%= (editdata)?editdata._id:''%>">
                     <!--begin::Body-->
@@ -67,6 +67,14 @@
                         />
                         
                       </div>
+
+                      <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Image</label>
+                        <input
+                          type="file"
+                          name="image"
+                          class="form-control"/>
+                      </div>
                     </div>
                     <!--end::Body-->
                     <!--begin::Footer-->
@@ -91,6 +99,7 @@
                       <thead>
                         <tr>
                           <th style="width: 10px">#</th>
+                          <th>Image</th>
                           <th>Category</th>
                           <th>Subcategory</th>
                           <th>Action</th>
@@ -100,6 +109,7 @@
                       <% subcatdata.map((i,index)=>{ %>
                           <tr>
                             <td><%= index+1%></td>
+                            <td><img src="uploads/<%=i.image %>" alt="" height="50px" width="50px"></td>
                             <td><%= i.cat_id %></td>
                             <td><%= i.subcatname %></td>
                             <td>
