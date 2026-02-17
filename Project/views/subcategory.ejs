@@ -67,13 +67,14 @@
                         />
                         
                       </div>
-
                       <div class="mb-3">
                         <label for="exampleInputEmail1" class="form-label">Image</label>
                         <input
                           type="file"
                           name="image"
                           class="form-control"/>
+                          <br>
+                          <img src="../../uploads/<%= editdata?editdata.image:''%>" alt="" height="50px" width="50px">
                       </div>
                     </div>
                     <!--end::Body-->
@@ -109,7 +110,7 @@
                       <% subcatdata.map((i,index)=>{ %>
                           <tr>
                             <td><%= index+1%></td>
-                            <td><img src="uploads/<%=i.image %>" alt="" height="50px" width="50px"></td>
+                            <td><img src="../../uploads/<%=i.image %>" alt="" height="50px" width="50px"></td>
                             <td><%= i.cat_id %></td>
                             <td><%= i.subcatname %></td>
                             <td>
