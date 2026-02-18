@@ -44,14 +44,12 @@
                     <div class="card-body">
                       <div class="mb-3">
                         <label for="exampleInputEmail1" class="form-label">Category</label>
-                        <input
-                          type="text"
-                          name="cat_id"
-                          class="form-control"
-                          id="exampleInputEmail1"
-                          aria-describedby="emailHelp"
-                          value="<%= (editdata)?editdata.cat_id:''%>"
-                        />
+                        <select name="catid" class="form-control">
+                          <option value="">--Select Category--</option>
+                          <% catdata.map((i)=>{ %>
+                              <option value="<%= i._id%>" <%= editdata && editdata.catid.equals(i._id)?'selected':'' %>><%= i.catname %></option>
+                          <%}) %>
+                        </select>
                         
                       </div>
                       
@@ -111,7 +109,7 @@
                           <tr>
                             <td><%= index+1%></td>
                             <td><img src="../../uploads/<%=i.image %>" alt="" height="50px" width="50px"></td>
-                            <td><%= i.cat_id %></td>
+                            <td><%= i.catid.catname %></td>
                             <td><%= i.subcatname %></td>
                             <td>
                              

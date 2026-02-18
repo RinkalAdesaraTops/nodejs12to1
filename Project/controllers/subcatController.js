@@ -1,3 +1,4 @@
+const catModel = require('../models/catModel');
 const subcatModel = require('../models/subcatModel')
 const fs = require('fs')
 // import subcatModel from "../models/subcatModel.js"
@@ -24,10 +25,12 @@ const insSubcat = async (req, res) => {
     res.redirect('/subcategory')
 }
 const dispSubcat = async (req, res) => {
-    let data = await subcatModel.find()
+    let data = await subcatModel.find().populate("catid")
+    let catdata = await catModel.find()
     res.render('subcategory', {
         "subcatdata": data,
-        "editdata": ""
+        "editdata": "",
+        "catdata":catdata
     })
 }
 const delSubcat = async (req, res) => {
@@ -46,10 +49,12 @@ const delSubcat = async (req, res) => {
 const editSubcat = async (req, res) => {
     const id = req.params.id
     let editdata = await subcatModel.findById(id)
-    let data = await subcatModel.find()
+    let data = await subcatModel.find().populate("catid")
+    let catdata = await catModel.find()
     res.render('subcategory', {
         subcatdata: data,
-        editdata: editdata
+        editdata: editdata,
+        catdata:catdata
     })
 }
 module.exports = { insSubcat, dispSubcat, delSubcat, editSubcat }

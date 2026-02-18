@@ -4,7 +4,10 @@ mongoose.connect("mongodb://localhost:27017/nodejs12to1")
 
 const schema = mongoose.Schema
 let subcatSchema = new schema({
-    cat_id:Number,
+    catid: { 
+        type: schema.Types.ObjectId, 
+        ref: 'category' 
+    },
     subcatname:String,
     image:String
 })
