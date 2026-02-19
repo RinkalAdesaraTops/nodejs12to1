@@ -1,139 +1,144 @@
 <%- include('./common/header.ejs') %>
-<%- include('./common/sidebar.ejs') %>
-<main class="app-main">
-        <!--begin::App Content Header-->
-        <div class="app-content-header">
-          <!--begin::Container-->
-          <div class="container-fluid">
-            <!--begin::Row-->
-            <div class="row">
-              <div class="col-sm-6"><h3 class="mb-0">General Form</h3></div>
-              <div class="col-sm-6">
-                <ol class="breadcrumb float-sm-end">
-                  <li class="breadcrumb-item"><a href="#">Home</a></li>
-                  <li class="breadcrumb-item active" aria-current="page">General Form</li>
-                </ol>
-              </div>
+  <%- include('./common/sidebar.ejs') %>
+    <main class="app-main">
+      <!--begin::App Content Header-->
+      <div class="app-content-header">
+        <!--begin::Container-->
+        <div class="container-fluid">
+          <!--begin::Row-->
+          <div class="row">
+            <div class="col-sm-6">
+              <h3 class="mb-0">General Form</h3>
             </div>
-            <!--end::Row-->
+            <div class="col-sm-6">
+              <ol class="breadcrumb float-sm-end">
+                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                <li class="breadcrumb-item active" aria-current="page">General Form</li>
+              </ol>
+            </div>
           </div>
-          <!--end::Container-->
+          <!--end::Row-->
         </div>
-        <!--end::App Content Header-->
-        <!--begin::App Content-->
-        <div class="app-content">
-          <!--begin::Container-->
-          <div class="container-fluid">
-            <!--begin::Row-->
-            <div class="row g-4">
-              <!--begin::Col-->
-              
-              <!--end::Col-->
-              <!--begin::Col-->
-              <div class="col-md-6">
-                <!--begin::Quick Example-->
-                <div class="card card-primary card-outline mb-4">
-                  <!--begin::Header-->
-                  <div class="card-header"><div class="card-title">Quick Example</div></div>
-                  <!--end::Header-->
-                  <!--begin::Form-->
-                  <form method="post" name="frm" action="/subcategory/ins" enctype="multipart/form-data">
-                          
-                    <input type="hidden" name="subid" value="<%= (editdata)?editdata._id:''%>">
-                    <!--begin::Body-->
-                    <div class="card-body">
-                      <div class="mb-3">
-                        <label for="exampleInputEmail1" class="form-label">Category</label>
-                        <select name="catid" class="form-control">
-                          <option value="">--Select Category--</option>
-                          <% catdata.map((i)=>{ %>
-                              <option value="<%= i._id%>" <%= editdata && editdata.catid.equals(i._id)?'selected':'' %>><%= i.catname %></option>
-                          <%}) %>
-                        </select>
-                        
-                      </div>
-                      
-                      <div class="mb-3">
-                        <label for="exampleInputEmail1" class="form-label">Subcategory</label>
-                        <input
-                          type="text"
-                          name="subcatname"
-                          class="form-control"
-                          id="exampleInputEmail1"
-                          aria-describedby="emailHelp"
-                          value="<%= (editdata)?editdata.subcatname:''%>"
-                        />
-                        
-                      </div>
-                      <div class="mb-3">
-                        <label for="exampleInputEmail1" class="form-label">Image</label>
-                        <input
-                          type="file"
-                          name="image"
-                          class="form-control"/>
-                          <br>
-                          <img src="../../uploads/<%= editdata?editdata.image:''%>" alt="" height="50px" width="50px">
-                      </div>
-                    </div>
-                    <!--end::Body-->
-                    <!--begin::Footer-->
-                    <div class="card-footer">
-                      <button type="submit" class="btn btn-primary">Save</button>
-                    </div>
-                    <!--end::Footer-->
-                  </form>
-                  <!--end::Form-->
+        <!--end::Container-->
+      </div>
+      <!--end::App Content Header-->
+      <!--begin::App Content-->
+      <div class="app-content">
+        <!--begin::Container-->
+        <div class="container-fluid">
+          <!--begin::Row-->
+          <div class="row g-4">
+            <!--begin::Col-->
+
+            <!--end::Col-->
+            <!--begin::Col-->
+            <div class="col-md-6">
+              <!--begin::Quick Example-->
+              <div class="card card-primary card-outline mb-4">
+                <!--begin::Header-->
+                <div class="card-header">
+                  <div class="card-title">Quick Example</div>
                 </div>
-                
-                <!--end::Horizontal Form-->
-              </div>
-              <!--end::Col-->
-              <!--begin::Col-->
-               <div class="col-md-6">
-                <div class="card mb-4">
-                  <div class="card-header"><h3 class="card-title">Bordered Table</h3></div>
-                  <!-- /.card-header -->
+                <!--end::Header-->
+                <!--begin::Form-->
+                <form method="post" name="frm" action="/subcategory/ins" enctype="multipart/form-data">
+
+                  <input type="hidden" name="subid" value="<%= (editdata)?editdata._id:''%>">
+                  <!--begin::Body-->
                   <div class="card-body">
-                    <table class="table table-bordered">
-                      <thead>
-                        <tr>
-                          <th style="width: 10px">#</th>
-                          <th>Image</th>
-                          <th>Category</th>
-                          <th>Subcategory</th>
-                          <th>Action</th>
-                        </tr>
-                      </thead>
-                     <tbody>
-                      <% subcatdata.map((i,index)=>{ %>
-                          <tr>
-                            <td><%= index+1%></td>
-                            <td><img src="../../uploads/<%=i.image %>" alt="" height="50px" width="50px"></td>
-                            <td><%= i.catid.catname %></td>
-                            <td><%= i.subcatname %></td>
-                            <td>
-                             
-                              <a href="/subcategory/del/<%= i._id %>" class="btn btn-danger">Delete</a>
-                              <a href="/subcategory/edit/<%= i._id %>" class="btn btn-info">Edit</a>
-                            </td>
-                          </tr>
-                      <% })%>
-                     </tbody>
-                    </table>
+                    <div class="mb-3">
+                      <label for="exampleInputEmail1" class="form-label">Category</label>
+                      <select name="catid" class="form-control">
+                        <option value="">--Select Category--</option>
+                        <% catdata.map((i)=>{ %>
+                          <option value="<%= i._id%>" <%=editdata && editdata.catid.equals(i._id)?'selected':'' %>><%=
+                              i.catname %>
+                          </option>
+                          <%}) %>
+                      </select>
+
+                    </div>
+
+                    <div class="mb-3">
+                      <label for="exampleInputEmail1" class="form-label">Subcategory</label>
+                      <input type="text" name="subcatname" class="form-control" id="exampleInputEmail1"
+                        aria-describedby="emailHelp" value="<%= (editdata)?editdata.subcatname:''%>" />
+
+                    </div>
+                    <div class="mb-3">
+                      <label for="exampleInputEmail1" class="form-label">Image</label>
+                      <input type="file" name="image" class="form-control" />
+                      <br>
+                      <img src="../../uploads/<%= editdata?editdata.image:''%>" alt="" height="50px" width="50px">
+                    </div>
                   </div>
-                  <!-- /.card-body -->
-                 
-                </div>
-                <!-- /.card -->
-                
-                <!-- /.card -->
+                  <!--end::Body-->
+                  <!--begin::Footer-->
+                  <div class="card-footer">
+                    <button type="submit" class="btn btn-primary">Save</button>
+                  </div>
+                  <!--end::Footer-->
+                </form>
+                <!--end::Form-->
               </div>
-              <!--end::Col-->
+
+              <!--end::Horizontal Form-->
             </div>
-            <!--end::Row-->
+            <!--end::Col-->
+            <!--begin::Col-->
+            <div class="col-md-6">
+              <div class="card mb-4">
+                <div class="card-header">
+                  <h3 class="card-title">Bordered Table</h3>
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body">
+                  <table class="table table-bordered">
+                    <thead>
+                      <tr>
+                        <th style="width: 10px">#</th>
+                        <th>Image</th>
+                        <th>Category</th>
+                        <th>Subcategory</th>
+                        <th>Action</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <% subcatdata.map((i,index)=>{ %>
+                        <tr>
+                          <td>
+                            <%= index+1%>
+                          </td>
+                          <td><img src="../../uploads/<%=i.image %>" alt="" height="50px" width="50px"></td>
+                          <td>
+                            <%= i.catid.catname %>
+                          </td>
+                          <td>
+                            <%= i.subcatname %>
+                          </td>
+                          <td>
+
+                            <a href="/subcategory/del/<%= i._id %>" class="btn btn-danger">Delete</a>
+                            <a href="/subcategory/edit/<%= i._id %>" class="btn btn-info">Edit</a>
+                          </td>
+                        </tr>
+                        <% })%>
+                    </tbody>
+                  </table>
+                </div>
+                <!-- /.card-body -->
+
+              </div>
+              <!-- /.card -->
+
+              <!-- /.card -->
+            </div>
+            <!--end::Col-->
           </div>
-          <!--end::Container-->
+          <!--end::Row-->
         </div>
-        <!--end::App Content-->
-      </main>
-<%- include('./common/footer.ejs') %>
+        <!--end::Container-->
+      </div>
+      <!--end::App Content-->
+    </main>
+    <%- include('./common/footer.ejs') %>
