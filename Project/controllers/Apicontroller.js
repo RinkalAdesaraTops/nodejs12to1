@@ -25,5 +25,4 @@ const disp = async(req,res)=>{
         })
     }
 }   
-
 module.exports = {add,del,disp}
