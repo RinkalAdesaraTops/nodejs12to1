@@ -6,7 +6,7 @@ var jwt = require('jsonwebtoken')
 const verifyToken = (req,res,next)=>{
     let data = req.headers.authorization
     console.log(data);
-    
+    // Bearer jdgh
     if(data!=undefined){
         let token = data.split(' ')[1];
     
@@ -22,10 +22,9 @@ const verifyToken = (req,res,next)=>{
         return res.json({
             "msg":"Please enter token"
         })
-    }
-    
+    } 
 }
-router.post("/cat/add",add)
+router.post("/cat/add",verifyToken,add)
 router.get("/cat/disp",verifyToken,disp)
-router.delete("/cat/del/:id",del)
+router.delete("/cat/del/:id",verifyToken,del)
 module.exports = router
